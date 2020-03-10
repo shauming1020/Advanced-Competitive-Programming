@@ -46,7 +46,7 @@ int main() {
 	}
 
 
-	for (int i = T; i >= 0; i--) cout << "Case #" << i+1 << ": " << Case[i] << "\n";
+	for (int i = T - 1; i >= 0; i--) cout << "Case #" << i+1 << ": " << Case[i] << "\n";
 
 	return 0;
 }
