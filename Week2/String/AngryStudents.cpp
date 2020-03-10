@@ -1,4 +1,4 @@
-https://codeforces.com/contest/1287/problem/A
+#https://codeforces.com/contest/1287/problem/A
 
 #include <iostream>     // std::cout
 #include <string>		
