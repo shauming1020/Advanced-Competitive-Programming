@@ -1,3 +1,5 @@
+# https://codingcompetitions.withgoogle.com/kickstart/round/0000000000050e01/00000000000698d6
+
 #include <iostream>     // std::cout
 #include <algorithm>	// std::sort
 #include <vector>		// std::vector
