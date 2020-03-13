@@ -45,7 +45,7 @@ int main(void) {
         fires[i] = fire;
     }
 
-    for (int i = 0; i < q; i++) printf("%d", fires[i]);
+    for (int i = 0; i < q; i++) printf("%d\n", fires[i]);
 
     return 0;
 }
