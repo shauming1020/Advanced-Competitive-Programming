@@ -1,8 +1,8 @@
 # https://codeforces.com/contest/1238/problem/B
 # 
-
 #include <iostream>
 #include <set>
+
 using namespace std;
 
 int main(void) {
@@ -23,20 +23,23 @@ int main(void) {
                 S.insert(tmp);
             }
 
-            set<int>::iterator tail = S.end(); tail--;
+            set<int>::iterator tail;
 
             while (!S.empty()) {
-                if (tail == S.begin()) break;
+                tail = S.end(); tail--;
+                if (tail == S.begin()) {
+                    if (*tail <= dead) break;
+                    else {
+                        fire++; break;
+                    }
+                }
 
                 c = *tail;
+                fire++;
                 dead += r;
-
                 for (;tail!=S.begin();tail--)
                     if (*tail <= dead || *tail == c) S.erase(tail);
 
-                tail = S.end(); tail--;
-
-                fire++;
             }
         fires[i] = fire;
     }
