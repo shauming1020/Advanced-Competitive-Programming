@@ -1,56 +1,39 @@
 # https://codingcompetitions.withgoogle.com/kickstart/round/0000000000050e01/00000000000698d6
-# TLE
+# AC
 
 #include <iostream>     // std::cout
 #include <algorithm>	// std::sort
-#include <vector>	// std::vector
-using namespace std;
+#define INF 0x3f3f3f3f
 
-bool cmp(const int& a, int &b) {
-	return a > b;
-}
+using namespace std;
+typedef long long LL;
+const int MAXN = 1e5 +10;
+
+LL T, N, P, S[MAXN], t, i, j, k, x, sum, min_sum;
 
 int main() {
 
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
+    scanf("%d", &T);
+    for (t = 0; t < T; t++) {
+        scanf("%d%d", &N, &P);
+        for (i = 0;i < N; i++) scanf("%d", &S[i]);
 
-	int T;
-	cin >> T;
-	int *Case = new int[T], count = T;
+        sort(S, S + N, greater<int>());
 
+        min_sum = INF;
+        for (i = 0; i < N - P + 1; i+=k) {
+            sum = 0; k = 0;
+            for (j = i; j < i + P and i + P <= N;j++) {
+                x = S[i] - S[j];
+                if (x == 0) { k++; continue;}
+                sum += x;
+            }
+            min_sum = sum < min_sum ? sum : min_sum;
+            if (min_sum == 0) break;
+        }
 
-	while (count--) {
+        cout << "Case #" << t + 1 << ": " << min_sum << "\n";
+    }
 
-		int N, P;
-		cin >> N >> P;
-
-		vector<int> *S = new vector<int>(N);
-		for (int i = 0; i < N; i++) cin >> S->at(i);
-
-		sort(S->begin(), S->end(), cmp);
-
-		int min = 0x13131313, same, sum;
-		for (int i = 0; i < N; i++) {
-			int tmp = S->at(i);
-			sum = 0; same = 1;
-			for (int j = i + 1; j < N; j++) {
-
-				if (tmp == S->at(j)) { same++; i = j; }
-				else {
-					sum += tmp - S->at(j);
-					same++;
-				}
-				if (same == P) { min = sum < min ? sum : min; break; }
-			}
-		}
-
-		Case[count] = min;
-	}
-
-
-	for (int i = T - 1; i >= 0; i--) cout << "Case #" << T - i << ": " << Case[i] << "\n";
-
-	system("pause");
 	return 0;
 }
