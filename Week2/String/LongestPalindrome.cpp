@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int n, m, l = 0, max_value = 0, max_index = -1;
+int n, m, i, j;
 pair<int, int> x;
 queue<pair<int,int>> id;
 string s;
@@ -29,7 +29,7 @@ int main(void) {
     cin >> n >> m;
     string *S = new string[n];
 
-    for (int i = 0; i < n; i++) cin >> S[i];
+    for (i = 0; i < n; i++) cin >> S[i];
 
     /// Case of one element
     if (m == 1) {
@@ -39,21 +39,17 @@ int main(void) {
 
     /// Case of more element
     // check self whether is a palindrome
-    for (int i = 0; i < n; i++) {
-        l = check_palindrome(S[i]);
-        if (max_value < l) {
-            max_value = l;
-            max_index = i;
+    for (i = 0; i < n; i++) {
+        if (0 < check_palindrome(S[i])) {
+            break;
         }
     }
-    s = max_index == -1 ? "\0" : S[max_index];
+    s = i == n ? "\0" : S[i]; // if i == n, that was there are no palindrome.
 
     //
-    for (int i = 0; i < n; i++)
-        for (int j = i + 1; j < n; j++) {
-            l = check_palindrome(S[i] + S[j]);
-            if (l) id.push(pair<int,int>(i, j));
-        }
+    for (i = 0; i < n; i++)
+        for (j = i + 1; j < n; j++)
+            if (check_palindrome(S[i] + S[j])) id.push(pair<int,int>(i, j));
 
     while (!id.empty()) {
         x = id.front();
