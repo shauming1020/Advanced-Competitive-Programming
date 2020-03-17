@@ -49,14 +49,11 @@ int main(void) {
     s = max_index == -1 ? "\0" : S[max_index];
 
     //
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
         for (int j = i + 1; j < n; j++) {
             l = check_palindrome(S[i] + S[j]);
-            if (l) {
-                id.push(pair<int,int>(i, j));
-            }
+            if (l) id.push(pair<int,int>(i, j));
         }
-    }
 
     while (!id.empty()) {
         x = id.front();
@@ -66,5 +63,4 @@ int main(void) {
 
     cout << s.size() << "\n" << s;
     return 0;
-
 }
