@@ -32,18 +32,12 @@ int main(void) {
     for (i = 0; i < n; i++) cin >> S[i];
 
     /// Case of one element
-    if (m == 1) {
-        cout << 1 << "\n" << S[0];
-        return 0;
-    }
+    if (m == 1) { cout << 1 << "\n" << S[0]; return 0; }
 
     /// Case of more element
     // check self whether is a palindrome
-    for (i = 0; i < n; i++) {
-        if (0 < check_palindrome(S[i])) {
-            break;
-        }
-    }
+    for (i = 0; i < n; i++)
+        if (0 < check_palindrome(S[i])) break;
     s = i == n ? "\0" : S[i]; // if i == n, that was there are no palindrome.
 
     //
