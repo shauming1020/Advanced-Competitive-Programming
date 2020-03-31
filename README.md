@@ -1,5 +1,8 @@
 # ADVANCED-COMPETITIVE-PROGRAMMING
 
+## Union-Find Forest
+### Classification (Disjoint Sets)
+
 ## DFS
 ### Find Connected Component
 
