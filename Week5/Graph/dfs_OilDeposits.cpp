@@ -1,4 +1,5 @@
 # https://onlinejudge.org/external/5/572.pdf
+# AC
 
 #include <bits/stdc++.h>
 #define endl '\n'
