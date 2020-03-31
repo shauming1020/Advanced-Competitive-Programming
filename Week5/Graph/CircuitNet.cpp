@@ -18,6 +18,7 @@ void Union(int u, int v)
 
 int main() {
     cin >> T;
+    cout << endl;
     while(T--) {
         /// initial
         cin >> N;
@@ -39,6 +40,9 @@ int main() {
     }
     return 0;
 }
+
+
+
 
 
 
