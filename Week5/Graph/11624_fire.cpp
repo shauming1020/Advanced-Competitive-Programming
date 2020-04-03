@@ -42,18 +42,21 @@ int main() {
             auto [fr, fc, ft] = F.front(); F.pop();
 
             for (int d = 0; d < 4; d++) {
-                int nr = fr + dr[d], nc = fc + dc[d];
-                if (nr == R || nc == C || nr < 0 || nc < 0 || maze[nr][nc] != INF || maze[nr][nc] == 0) continue;
+                int nr = fr + dr[d], nc = fc + dc[d]; // next step, new coordinate
+                if (nr == R || nc == C || nr < 0 || nc < 0 // over side
+                || maze[nr][nc] != INF || maze[nr][nc] == 0) // cannot visit
+                    continue;
 
                 maze[nr][nc] = ft + 1;
                 F.push({nr,nc,ft+1});
             }
         }
 
-        /// search the shortest of joe
+        /// search the shortest trail of joe
         int escape = -1;
         while (!J.empty()) {
             auto [jr, jc, jt] = J.front(); J.pop();
+            // visit the exit
             if ((jr == R-1 || jc == C-1) || (jr == 0 || jc ==0)) {
                 escape = jt + 1;
                 break;
@@ -61,6 +64,8 @@ int main() {
 
             for (int d = 0; d < 4; d++) {
                 int nr = jr + dr[d], nc = jc + dc[d];
+
+                // already visit or cannot visit the value of ft if jt >= ft.
                 if (vis[nr][nc] || jt + 1 >= maze[nr][nc]) continue;
 
                 vis[nr][nc] = true;
@@ -69,9 +74,11 @@ int main() {
         }
 
         /// return
-        if (escape) cout << escape << endl;
+        if (escape > -1) cout << escape << endl;
         else cout << "IMPOSSIBLE" << endl;
     }
     return 0;
 }
+
+
 
